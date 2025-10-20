@@ -28,8 +28,8 @@ export const generateQRCode = async (
             width: 300,
             margin: 2,
             color: {
-                dark: '#000000',
-                light: '#FFFFFF',
+                dark: '#e91616ff',
+                light: '#4809f3ff',
             },
             errorCorrectionLevel: 'M',
             ...options,

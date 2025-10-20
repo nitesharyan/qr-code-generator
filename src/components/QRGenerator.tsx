@@ -19,9 +19,7 @@ function QRGenerator(): React.ReactElement {
 
         // Validate URL format
         if (!isValidUrl(url)) {
-            alert(
-                'Please enter a valid URL format (e.g., https://example.com or example.com)'
-            )
+            alert('Please enter a valid URL format (e.g., https://example.com or example.com)')
             return
         }
 
@@ -32,15 +30,7 @@ function QRGenerator(): React.ReactElement {
             setIsGenerating(true)
 
             // Generate QR code locally using our own generator
-            const qrCodeDataURL = await generateQRCode(formattedUrl, {
-                width: 300,
-                margin: 2,
-                color: {
-                    dark: '#000000',
-                    light: '#FFFFFF',
-                },
-                errorCorrectionLevel: 'M',
-            })
+            const qrCodeDataURL = await generateQRCode(formattedUrl, {})
 
             setQrCode(qrCodeDataURL)
         } catch (error) {
