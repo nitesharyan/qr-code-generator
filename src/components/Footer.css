@@ -1,7 +1,7 @@
 .footer {
-    background-color: #1a1a1a;
+    background-color: var(--bg-secondary);
     padding: 2rem;
-    border-top: 1px solid #333;
+    border-top: 1px solid var(--border-color);
     width: 100%;
     position: fixed;
     bottom: 0;
@@ -39,13 +39,14 @@
 
 .footer-text p {
     margin: 0.25rem 0;
-    color: #888;
+    color: var(--text-secondary);
     font-size: 0.9rem;
 }
 
 .footer-subtext {
     font-size: 0.8rem;
-    color: #666;
+    color: var(--text-secondary);
+    opacity: 0.8;
 }
 
 @media (max-width: 768px) {

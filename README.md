@@ -23,7 +23,7 @@ _Screenshots will be added soon_
 - ✅ **Instant QR Generation** - Generate QR codes in real-time from valid URLs
 - ✅ **Download QR Codes** - Save generated QR codes as PNG images
 - ✅ **Responsive Design** - Fully optimized for mobile (768px breakpoint) and desktop
-- ✅ **Dark Theme** - Modern dark UI with gradient effects
+- ✅ **Light & Dark Themes** - Toggle between themes with floating button, automatic theme persistence
 - ✅ **Real-time Feedback** - Instant validation feedback with error messages
 - ✅ **TypeScript Powered** - Fully typed codebase for better development experience
 - ✅ **Fast Development** - Lightning-fast HMR with Vite
@@ -41,6 +41,13 @@ _Screenshots will be added soon_
 - "QR Code Generator" title centered
 - Fixed position - stays visible while scrolling
 - Responsive: Scales down on mobile devices
+
+#### **Theme Toggle**
+- Floating button in top-right corner
+- Sun icon (☀️) in dark mode - click to switch to light
+- Moon icon (🌙) in light mode - click to switch to dark
+- Smooth transitions between themes
+- Remembers your preference across sessions
 
 #### **Main Content Area**
 
@@ -72,7 +79,7 @@ _Screenshots will be added soon_
 - 🌈 **Purple & Green Gradients** - Modern gradient buttons with hover effects
 - ✨ **Smooth Animations** - Fade-in effects and hover transformations
 - 📱 **Mobile Optimized** - Touch-friendly buttons and responsive layouts
-- 🌙 **Dark Theme** - Easy on the eyes with semi-transparent glassmorphism
+- 🌙 **Light & Dark Themes** - Toggle between themes with smooth transitions, persistent preferences
 - 🎭 **Interactive** - Hover effects, active states, and smooth transitions
 
 ---
@@ -515,10 +522,22 @@ qr-code-generator/
 │   │   ├── Footer.tsx          # Footer with copyright
 │   │   ├── Footer.css          # Footer styles
 │   │   ├── QRGenerator.tsx     # Main QR generator logic
-│   │   └── QRGenerator.css     # QR generator styles
+│   │   ├── QRGenerator.css     # QR generator styles
+│   │   ├── ThemeToggle.tsx     # Theme toggle button
+│   │   └── ThemeToggle.css     # Theme toggle styles
+│   │
+│   ├── contexts/                # React contexts
+│   │   └── ThemeContext.tsx    # Theme state management
+│   │
+│   ├── hooks/                   # Custom hooks
+│   │   └── useTheme.ts         # Theme hook
+│   │
+│   ├── config/                  # Configuration
+│   │   └── theme.ts            # Theme configuration
 │   │
 │   ├── utils/                   # Helper utilities
-│   │   └── urlValidator.ts     # URL validation functions
+│   │   ├── urlValidator.ts     # URL validation functions
+│   │   └── qrCodeGenerator.ts  # QR code generation utilities
 │   │
 │   ├── App.tsx                  # Main App component
 │   ├── App.css                  # App-level styles
@@ -670,6 +689,21 @@ The application validates URLs using multiple layers:
 **Step 4: Format URL**
 - Adds `https://` if no protocol present
 - Returns formatted URL for QR generation
+
+### Theme Customization
+
+**Switching Themes:**
+- Click the floating theme toggle button (top-right corner)
+- Light mode shows 🌙 moon icon (click to go dark)
+- Dark mode shows ☀️ sun icon (click to go light)
+- Your preference is automatically saved
+
+**Changing Default Theme** (For Developers):
+Edit `src/config/theme.ts` and change one line:
+```typescript
+DEFAULT_THEME: 'light'  // Change to 'dark' for dark default
+```
+Also update `index.html` (line ~9) to match.
 
 ### Keyboard Shortcuts
 
@@ -861,6 +895,14 @@ The `/dist` folder can be deployed to any static hosting service:
 - [ ] Buttons are full-width on mobile
 - [ ] QR code fits screen on mobile
 - [ ] No horizontal scrolling
+
+#### Theme Testing
+
+- [ ] Toggle between light and dark themes
+- [ ] Theme persists after page reload
+- [ ] No flash of wrong theme on load
+- [ ] Smooth transitions between themes
+- [ ] Floating button visible and accessible
 
 #### Keyboard Testing
 

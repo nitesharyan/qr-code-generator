@@ -19,17 +19,14 @@ export interface QRCodeOptions {
  * @param options - QR code generation options
  * @returns Promise<string> - Data URL of the generated QR code image
  */
-export const generateQRCode = async (
-    text: string,
-    options?: QRCodeOptions
-): Promise<string> => {
+export const generateQRCode = async (text: string, options?: QRCodeOptions): Promise<string> => {
     try {
         const defaultOptions: QRCodeOptions = {
             width: 300,
             margin: 2,
             color: {
-                dark: '#e91616ff',
-                light: '#4809f3ff',
+                dark: '#000000',
+                light: '#FFFFFF',
             },
             errorCorrectionLevel: 'M',
             ...options,

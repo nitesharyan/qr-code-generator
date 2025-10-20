@@ -5,17 +5,17 @@
 }
 
 .input-section {
-    background: rgba(255, 255, 255, 0.05);
+    background: var(--bg-secondary);
     padding: 2rem;
     border-radius: 12px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 20px var(--shadow-lg);
     margin-bottom: 2rem;
 }
 
 .input-section h2 {
     margin-top: 0;
     margin-bottom: 1.5rem;
-    color: #fff;
+    color: var(--text-primary);
     font-size: 1.5rem;
 }
 
@@ -30,27 +30,27 @@
     min-width: 250px;
     padding: 0.75rem 1rem;
     font-size: 1rem;
-    border: 2px solid #444;
+    border: 2px solid var(--input-border);
     border-radius: 8px;
-    background-color: #2a2a2a;
-    color: #fff;
+    background-color: var(--input-bg);
+    color: var(--input-text);
     transition: border-color 0.3s;
 }
 
 .url-input:focus {
     outline: none;
-    border-color: #667eea;
+    border-color: var(--primary-start);
 }
 
 .url-input::placeholder {
-    color: #888;
+    color: var(--input-placeholder);
 }
 
 .generate-btn {
     padding: 0.75rem 2rem;
     font-size: 1rem;
     font-weight: 600;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, var(--primary-start) 0%, var(--primary-end) 100%);
     color: white;
     border: none;
     border-radius: 8px;
@@ -69,12 +69,18 @@
     transform: translateY(0);
 }
 
+.generate-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
 .qr-output {
     text-align: center;
-    background: rgba(255, 255, 255, 0.05);
+    background: var(--bg-secondary);
     padding: 2rem;
     border-radius: 12px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 20px var(--shadow-lg);
     animation: fadeIn 0.5s ease-in;
 }
 
@@ -92,7 +98,7 @@
 .qr-output h3 {
     margin-top: 0;
     margin-bottom: 1.5rem;
-    color: #fff;
+    color: var(--text-primary);
     font-size: 1.3rem;
 }
 
@@ -101,7 +107,7 @@
     padding: 1.5rem;
     border-radius: 12px;
     display: inline-block;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 4px 15px var(--shadow-md);
     max-width: 100%;
     box-sizing: border-box;
 }
@@ -116,12 +122,12 @@
 
 .qr-info {
     margin: 1.5rem 0;
-    color: #ccc;
+    color: var(--text-secondary);
     font-size: 0.95rem;
 }
 
 .qr-info strong {
-    color: #667eea;
+    color: var(--primary-start);
     word-break: break-all;
 }
 
@@ -131,10 +137,12 @@
     margin-top: 1rem;
     font-size: 1rem;
     font-weight: 600;
-    background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+    background: linear-gradient(135deg, var(--accent-start) 0%, var(--accent-end) 100%);
     color: white;
     text-decoration: none;
     border-radius: 8px;
+    border: none;
+    cursor: pointer;
     transition:
         transform 0.2s,
         box-shadow 0.2s;

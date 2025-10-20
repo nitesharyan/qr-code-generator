@@ -1,13 +1,62 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/assets/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>QR Code Generator</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+    <head>
+        <meta charset="UTF-8" />
+        <link rel="icon" type="image/svg+xml" href="/assets/vite.svg" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>QR Code Generator</title>
+        <!-- Theme script - runs BEFORE React loads to prevent flash -->
+        <script>
+            ;(function () {
+                // Theme Configuration (Keep in sync with src/config/theme.ts)
+                const DEFAULT_THEME = 'light' // Change this to 'dark' to switch default
+                const RESPECT_SYSTEM_PREFERENCE = true
+                const STORAGE_KEY = 'theme'
+
+                // Get theme with same priority as ThemeContext
+                function getInitialTheme() {
+                    // 1. Check localStorage first (highest priority)
+                    const savedTheme = localStorage.getItem(STORAGE_KEY)
+                    if (savedTheme) return savedTheme
+
+                    // 2. Check system preference (if enabled)
+                    if (RESPECT_SYSTEM_PREFERENCE) {
+                        const prefersDark = window.matchMedia(
+                            '(prefers-color-scheme: dark)'
+                        ).matches
+                        if (prefersDark) return 'dark'
+                    }
+
+                    // 3. Fallback to default
+                    return DEFAULT_THEME
+                }
+
+                const theme = getInitialTheme()
+                document.documentElement.setAttribute('data-theme', theme)
+            })()
+        </script>
+        <!-- Critical CSS - Inline to prevent FOUC -->
+        <style>
+            :root {
+                --bg-primary: #ffffff;
+                --text-primary: #1a1a1a;
+            }
+            [data-theme='dark'] {
+                --bg-primary: #1a1a1a;
+                --text-primary: #ffffff;
+            }
+            html,
+            body {
+                margin: 0;
+                padding: 0;
+                background-color: var(--bg-primary);
+                color: var(--text-primary);
+                transition: none;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="root"></div>
+        <script type="module" src="/src/main.tsx"></script>
+    </body>
 </html>

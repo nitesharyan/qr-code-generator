@@ -3,35 +3,97 @@
     line-height: 1.5;
     font-weight: 400;
 
-    color-scheme: light dark;
-    color: rgba(255, 255, 255, 0.87);
-    background-color: #242424;
-
     font-synthesis: none;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+
+    /* Light Theme (Default) */
+    --bg-primary: #ffffff;
+    --bg-secondary: #f8f9fa;
+    --bg-tertiary: #ffffff;
+    --text-primary: #1a1a1a;
+    --text-secondary: #6c757d;
+    --border-color: #dee2e6;
+    --shadow: rgba(0, 0, 0, 0.1);
+    --shadow-md: rgba(0, 0, 0, 0.15);
+    --shadow-lg: rgba(0, 0, 0, 0.2);
+
+    /* Input specific */
+    --input-bg: #ffffff;
+    --input-border: #444444;
+    --input-text: #1a1a1a;
+    --input-placeholder: #6c757d;
+
+    /* Theme Toggle Button */
+    --toggle-bg: #ffffff;
+    --toggle-border: #dee2e6;
+    --toggle-icon-color: #1a1a1a;
+    --toggle-shadow: rgba(0, 0, 0, 0.1);
+    --toggle-shadow-hover: rgba(0, 0, 0, 0.2);
+
+    /* Brand Colors (same in both themes) */
+    --primary-start: #667eea;
+    --primary-end: #764ba2;
+    --accent-start: #11998e;
+    --accent-end: #38ef7d;
+
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+}
+
+/* Dark Theme */
+[data-theme='dark'] {
+    --bg-primary: #1a1a1a;
+    --bg-secondary: #2d2d2d;
+    --bg-tertiary: #3a3a3a;
+    --text-primary: #ffffff;
+    --text-secondary: #b4b4b4;
+    --border-color: #404040;
+    --shadow: rgba(0, 0, 0, 0.5);
+    --shadow-md: rgba(0, 0, 0, 0.6);
+    --shadow-lg: rgba(0, 0, 0, 0.7);
+
+    /* Input specific */
+    --input-bg: #2a2a2a;
+    --input-border: #444444;
+    --input-text: #ffffff;
+    --input-placeholder: #888888;
+
+    /* Theme Toggle Button */
+    --toggle-bg: #2d2d2d;
+    --toggle-border: #404040;
+    --toggle-icon-color: #ffffff;
+    --toggle-shadow: rgba(0, 0, 0, 0.5);
+    --toggle-shadow-hover: rgba(0, 0, 0, 0.7);
 }
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    transition:
+        background-color 0.3s ease,
+        color 0.3s ease,
+        border-color 0.3s ease;
 }
 
 a {
     font-weight: 500;
-    color: #646cff;
+    color: var(--primary-start);
     text-decoration: inherit;
 }
+
 a:hover {
-    color: #535bf2;
+    color: var(--primary-end);
 }
 
 body {
     margin: 0;
     min-width: 320px;
     min-height: 100vh;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
 }
 
 h1 {
@@ -46,27 +108,10 @@ button {
     font-size: 1em;
     font-weight: 500;
     font-family: inherit;
-    background-color: #1a1a1a;
     cursor: pointer;
-    transition: border-color 0.25s;
 }
-button:hover {
-    border-color: #646cff;
-}
+
 button:focus,
 button:focus-visible {
     outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
-    :root {
-        color: #213547;
-        background-color: #ffffff;
-    }
-    a:hover {
-        color: #747bff;
-    }
-    button {
-        background-color: #f9f9f9;
-    }
 }
