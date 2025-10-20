@@ -102,12 +102,16 @@
     border-radius: 12px;
     display: inline-block;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    max-width: 100%;
+    box-sizing: border-box;
 }
 
 .qr-code-image {
     display: block;
+    width: 100%;
     max-width: 300px;
     height: auto;
+    margin: 0 auto;
 }
 
 .qr-info {
@@ -150,15 +154,59 @@
         padding: 2rem 1rem;
     }
 
+    .input-section {
+        padding: 1.5rem 1rem;
+    }
+
+    .input-section h2 {
+        font-size: 1.25rem;
+        margin-bottom: 1rem;
+    }
+
     .input-group {
         flex-direction: column;
+        gap: 0.75rem;
     }
 
     .url-input {
         width: 100%;
+        min-width: unset;
+        padding: 0.875rem 1rem;
+        font-size: 1rem;
     }
 
     .generate-btn {
         width: 100%;
+        padding: 0.875rem 2rem;
+    }
+
+    .qr-output {
+        padding: 1.5rem 1rem;
+    }
+
+    .qr-output h3 {
+        font-size: 1.15rem;
+    }
+
+    .qr-code-container {
+        padding: 1rem;
+        max-width: calc(100% - 2rem);
+        width: 100%;
+    }
+
+    .qr-code-image {
+        max-width: 100%;
+        width: 100%;
+    }
+
+    .qr-info {
+        font-size: 0.875rem;
+        margin: 1rem 0;
+    }
+
+    .download-btn {
+        width: calc(100% - 2rem);
+        max-width: 300px;
+        padding: 0.875rem 1.5rem;
     }
 }

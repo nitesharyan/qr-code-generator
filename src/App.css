@@ -9,3 +9,10 @@
     padding-top: 100px; /* Space for fixed header */
     padding-bottom: 150px; /* Space for fixed footer */
 }
+
+@media (max-width: 768px) {
+    .main-content {
+        padding-top: 80px; /* Reduced space for smaller header */
+        padding-bottom: 140px; /* Reduced space for smaller footer */
+    }
+}
