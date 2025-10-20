@@ -1,5 +1,6 @@
 import React from 'react'
 import './Footer.css'
+import reactLogo from '/assets/react.svg'
 
 function Footer(): React.ReactElement {
     const currentYear: number = new Date().getFullYear()
@@ -7,7 +8,7 @@ function Footer(): React.ReactElement {
     return (
         <footer className="footer">
             <div className="footer-content">
-                <img src="/assets/react.svg" alt="React Logo" className="footer-logo" />
+                <img src={reactLogo} alt="React Logo" className="footer-logo" />
                 <div className="footer-text">
                     <p>&copy; {currentYear} QR Code Generator. All rights reserved.</p>
                     <p className="footer-subtext">Built with React & Vite</p>
