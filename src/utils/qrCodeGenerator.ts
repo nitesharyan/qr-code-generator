@@ -1,9 +1,18 @@
+/**
+ * QR Code Generator Utility
+ *
+ * Provides functions for generating QR codes from text/URLs
+ * Uses the 'qrcode' library for reliable QR code generation
+ */
+
 import QRCode from 'qrcode'
 
 /**
- * QR Code generation options
+ * QR Code Generation Options Interface
+ *
+ * Configuration options for QR code generation
  */
-export interface QRCodeOptions {
+export interface IQRCodeOptions {
     width?: number
     margin?: number
     color?: {
@@ -14,14 +23,26 @@ export interface QRCodeOptions {
 }
 
 /**
- * Generates a QR code as a data URL
- * @param text - The text/URL to encode in the QR code
- * @param options - QR code generation options
- * @returns Promise<string> - Data URL of the generated QR code image
+ * Generates a QR code as a data URL (base64 encoded PNG)
+ *
+ * Creates a QR code image from the provided text and returns it as a data URL
+ * that can be used directly in an <img> src attribute
+ *
+ * @param {string} text - The text/URL to encode in the QR code
+ * @param {IQRCodeOptions} [options] - Optional QR code generation options
+ * @returns {Promise<string>} Data URL of the generated QR code image
+ * @throws {Error} If QR code generation fails
+ *
+ * @example
+ * const qrDataURL = await generateQRCode('https://example.com')
+ * <img src={qrDataURL} alt="QR Code" />
  */
-export const generateQRCode = async (text: string, options?: QRCodeOptions): Promise<string> => {
+export const generateQRCode = async (
+    text: string,
+    options?: IQRCodeOptions
+): Promise<string> => {
     try {
-        const defaultOptions: QRCodeOptions = {
+        const defaultOptions: IQRCodeOptions = {
             width: 300,
             margin: 2,
             color: {
@@ -42,18 +63,28 @@ export const generateQRCode = async (text: string, options?: QRCodeOptions): Pro
 }
 
 /**
- * Generates a QR code as a canvas element
- * @param text - The text/URL to encode in the QR code
- * @param canvas - HTML canvas element to draw on
- * @param options - QR code generation options
+ * Generates a QR code directly onto an HTML canvas element
+ *
+ * Draws the QR code on the provided canvas for direct manipulation
+ * or when canvas-based rendering is preferred
+ *
+ * @param {string} text - The text/URL to encode in the QR code
+ * @param {HTMLCanvasElement} canvas - HTML canvas element to draw on
+ * @param {IQRCodeOptions} [options] - Optional QR code generation options
+ * @returns {Promise<void>}
+ * @throws {Error} If QR code generation fails
+ *
+ * @example
+ * const canvas = canvasRef.current
+ * await generateQRCodeToCanvas('https://example.com', canvas)
  */
 export const generateQRCodeToCanvas = async (
     text: string,
     canvas: HTMLCanvasElement,
-    options?: QRCodeOptions
+    options?: IQRCodeOptions
 ): Promise<void> => {
     try {
-        const defaultOptions: QRCodeOptions = {
+        const defaultOptions: IQRCodeOptions = {
             width: 300,
             margin: 2,
             color: {
@@ -72,9 +103,17 @@ export const generateQRCodeToCanvas = async (
 }
 
 /**
- * Downloads the QR code as a PNG file
- * @param dataURL - Data URL of the QR code image
- * @param filename - Name of the file to download
+ * Downloads a QR code image to the user's device
+ *
+ * Creates a temporary link element and triggers download of the QR code
+ * as a PNG file with the specified filename
+ *
+ * @param {string} dataURL - Data URL of the QR code image
+ * @param {string} [filename='qrcode.png'] - Name of the file to download
+ * @returns {void}
+ *
+ * @example
+ * downloadQRCode(qrDataURL, 'my-qr-code.png')
  */
 export const downloadQRCode = (dataURL: string, filename: string = 'qrcode.png'): void => {
     const link = document.createElement('a')

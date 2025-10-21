@@ -110,6 +110,37 @@
     box-shadow: 0 4px 15px var(--shadow-md);
     max-width: 100%;
     box-sizing: border-box;
+    position: relative;
+    min-height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.qr-loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 300px;
+    height: 300px;
+}
+
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 4px solid var(--bg-secondary);
+    border-top: 4px solid var(--primary-start);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
 .qr-code-image {
@@ -200,6 +231,17 @@
         padding: 1rem;
         max-width: calc(100% - 2rem);
         width: 100%;
+        min-height: 250px;
+    }
+
+    .qr-loading {
+        width: 250px;
+        height: 250px;
+    }
+
+    .spinner {
+        width: 40px;
+        height: 40px;
     }
 
     .qr-code-image {

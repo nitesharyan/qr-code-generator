@@ -6,6 +6,14 @@ import Header from './components/Header'
 import Footer from './components/Footer'
 import QRGenerator from './components/QRGenerator'
 
+/**
+ * Main Application Component
+ *
+ * Root component that wraps the entire application with ThemeProvider
+ * and renders the main layout structure (Header, Content, Footer)
+ *
+ * @returns {React.ReactElement} The main app component
+ */
 function App(): React.ReactElement {
     return (
         <ThemeProvider>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generate Contact QR Codes</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 2rem;
+            background: #f5f5f5;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+        }
+        .qr-section {
+            margin: 2rem 0;
+            padding: 1rem;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+        }
+        h1 { color: #333; }
+        h3 { color: #667eea; }
+        .instructions {
+            background: #fff3cd;
+            padding: 1rem;
+            border-radius: 4px;
+            margin: 1rem 0;
+        }
+        canvas {
+            margin: 1rem 0;
+        }
+        button {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        button:hover {
+            background: #5568d3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎯 Generate Contact QR Codes</h1>
+        
+        <div class="instructions">
+            <strong>📋 Instructions:</strong>
+            <ol>
+                <li>Click "Generate QR Codes" button below</li>
+                <li>Right-click each QR code → "Save image as..."</li>
+                <li>Save as:
+                    <ul>
+                        <li><code>email-qr.png</code> in <code>public/assets/</code></li>
+                        <li><code>linkedin-qr.png</code> in <code>public/assets/</code></li>
+                    </ul>
+                </li>
+            </ol>
+        </div>
+
+        <button onclick="generateQRCodes()">Generate QR Codes</button>
+
+        <div class="qr-section">
+            <h3>📧 Email QR Code</h3>
+            <p><strong>Data:</strong> mailto:niteshu130@gmail.com</p>
+            <div id="email-qr"></div>
+            <p><em>Right-click and save as: <code>email-qr.png</code></em></p>
+        </div>
+
+        <div class="qr-section">
+            <h3>💼 LinkedIn QR Code</h3>
+            <p><strong>Data:</strong> https://www.linkedin.com/in/nitesh-5663</p>
+            <div id="linkedin-qr"></div>
+            <p><em>Right-click and save as: <code>linkedin-qr.png</code></em></p>
+        </div>
+    </div>
+
+    <script>
+        function generateQRCodes() {
+            // Clear previous QR codes
+            document.getElementById('email-qr').innerHTML = '';
+            document.getElementById('linkedin-qr').innerHTML = '';
+
+            // Generate Email QR
+            new QRCode(document.getElementById('email-qr'), {
+                text: 'mailto:niteshu130@gmail.com',
+                width: 120,
+                height: 120,
+                colorDark: '#000000',
+                colorLight: '#ffffff',
+                correctLevel: QRCode.CorrectLevel.M
+            });
+
+            // Generate LinkedIn QR
+            new QRCode(document.getElementById('linkedin-qr'), {
+                text: 'https://www.linkedin.com/in/nitesh-5663',
+                width: 120,
+                height: 120,
+                colorDark: '#000000',
+                colorLight: '#ffffff',
+                correctLevel: QRCode.CorrectLevel.M
+            });
+
+            alert('✅ QR Codes generated! Right-click each image to save.');
+        }
+    </script>
+</body>
+</html>

@@ -6,6 +6,11 @@ A modern, responsive QR Code Generator built with React, TypeScript, and Vite. G
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.6.3-blue?logo=typescript)
 ![Vite](https://img.shields.io/badge/Vite-7.1.7-purple?logo=vite)
 ![License](https://img.shields.io/badge/License-MIT-green)
+![Code Quality](https://img.shields.io/badge/Code%20Quality-8.5%2F10-brightgreen)
+
+> **Code Quality Rating: 8.5/10** - Reviewed by Claude AI Assistant
+>
+> 📖 **Before contributing, please read [CODE_REVIEW.md](CODE_REVIEW.md)** for code standards and guidelines
 
 ---
 
@@ -381,12 +386,30 @@ Navigate to **http://localhost:5173** in your web browser.
 
 You should see the QR Code Generator app running! 🎉
 
-### Step 6: Verify Everything Works
+### Step 6: Generate Contact QR Codes (Optional)
+
+The footer includes scannable QR codes for contact information. To generate them:
+
+```bash
+npm run generate:contact-qr
+```
+
+This creates QR codes for:
+- Email (`email-qr.png`)
+- LinkedIn (`linkedin-qr.png`)
+
+Saved in `public/assets/` directory.
+
+**Note:** Contact information is configured in `src/config/contact.ts`
+
+### Step 7: Verify Everything Works
 
 1. Enter a URL (e.g., `google.com`)
 2. Click "Generate QR Code" or press Enter
 3. QR code should appear
 4. Try downloading the QR code
+5. Toggle theme with floating button
+6. Check footer contact QR codes work
 
 ---
 
@@ -400,6 +423,7 @@ You should see the QR Code Generator app running! 🎉
 | `npm run lint` | Run ESLint to check code quality | Before committing code |
 | `npm run format` | Format all files with Prettier | Clean up code formatting |
 | `npm run format:check` | Check if files are properly formatted | CI/CD pipeline |
+| `npm run generate:contact-qr` | Generate contact QR codes | After updating contact info |
 
 ### Script Details
 
@@ -943,11 +967,16 @@ Contributions are welcome! Here's how you can help:
 
 ### Code Style Guidelines
 
+**📖 Read [CODE_REVIEW.md](CODE_REVIEW.md) before contributing!**
+
+Key standards:
 - **4 spaces** for indentation
-- **Single quotes** for strings
+- **Single quotes** for strings  
 - **No semicolons**
-- **Descriptive variable names**
-- **Add JSDoc comments** for functions
+- **Interfaces**: I prefix (e.g., `IProps`)
+- **Components**: PascalCase (e.g., `Header.tsx`)
+- **Functions**: camelCase with JSDoc
+- **Constants**: UPPER_SNAKE_CASE
 - **Type everything** in TypeScript
 
 ---

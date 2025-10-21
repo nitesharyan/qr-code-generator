@@ -10,7 +10,8 @@
         "preview": "vite preview",
         "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx,json,css,md}\"",
         "format:check": "prettier --check \"src/**/*.{js,jsx,ts,tsx,json,css,md}\"",
-        "deploy": "npm run build && gh-pages -d dist"
+        "deploy": "npm run build && gh-pages -d dist",
+        "generate:contact-qr": "tsx src/scripts/generateContactQR.ts"
     },
     "dependencies": {
         "qrcode": "^1.5.3",
@@ -19,6 +20,7 @@
     },
     "devDependencies": {
         "@eslint/js": "^9.36.0",
+        "@types/node": "^22.10.2",
         "@types/qrcode": "^1.5.5",
         "@types/react": "^19.1.16",
         "@types/react-dom": "^19.1.9",
@@ -29,6 +31,7 @@
         "gh-pages": "^6.1.1",
         "globals": "^16.4.0",
         "prettier": "^3.3.3",
+        "tsx": "^4.19.2",
         "typescript": "^5.6.3",
         "vite": "^7.1.7"
     }

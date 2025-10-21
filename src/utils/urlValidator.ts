@@ -1,10 +1,37 @@
 /**
- * Validates if a given string is a valid URL format using regex
- * @param url - The URL string to validate
- * @returns boolean - True if valid URL format, false otherwise
+ * URL Validator Utility
+ *
+ * Provides functions for validating and formatting URLs
+ * Uses multi-layer validation with regex patterns and URL constructor
+ */
+
+import { URL_PROTOCOLS } from '../constants'
+
+/**
+ * Validates if a given string is a valid URL format
+ *
+ * Performs multiple validation checks:
+ * - Empty/incomplete check
+ * - Regex pattern validation
+ * - Domain structure validation
+ * - URL constructor validation
+ * - TLD verification
+ *
+ * @param {string} url - The URL string to validate
+ * @returns {boolean} True if valid URL format, false otherwise
+ *
+ * @example
+ * isValidUrl('google.com') // true
+ * isValidUrl('https://example.com') // true
+ * isValidUrl('invalid') // false
  */
 export const isValidUrl = (url: string): boolean => {
-    if (!url || url.trim() === '' || url.trim() === 'https://' || url.trim() === 'http://') {
+    if (
+        !url ||
+        url.trim() === '' ||
+        url.trim() === URL_PROTOCOLS.HTTPS ||
+        url.trim() === URL_PROTOCOLS.HTTP
+    ) {
         return false
     }
 
@@ -31,9 +58,10 @@ export const isValidUrl = (url: string): boolean => {
     // Try creating URL object for additional validation
     try {
         const urlToTest =
-            trimmedUrl.startsWith('http://') || trimmedUrl.startsWith('https://')
+            trimmedUrl.startsWith(URL_PROTOCOLS.HTTP) ||
+            trimmedUrl.startsWith(URL_PROTOCOLS.HTTPS)
                 ? trimmedUrl
-                : `https://${trimmedUrl}`
+                : `${URL_PROTOCOLS.HTTPS}${trimmedUrl}`
 
         const urlObj = new URL(urlToTest)
 
@@ -56,16 +84,24 @@ export const isValidUrl = (url: string): boolean => {
 }
 
 /**
- * Formats a URL by adding https:// if no protocol is present
- * @param url - The URL string to format
- * @returns string - Formatted URL with protocol
+ * Formats a URL by adding https:// protocol if missing
+ *
+ * @param {string} url - The URL string to format
+ * @returns {string} Formatted URL with protocol
+ *
+ * @example
+ * formatUrl('google.com') // 'https://google.com'
+ * formatUrl('https://example.com') // 'https://example.com'
  */
 export const formatUrl = (url: string): string => {
     const trimmedUrl = url.trim()
 
-    if (trimmedUrl.startsWith('http://') || trimmedUrl.startsWith('https://')) {
+    if (
+        trimmedUrl.startsWith(URL_PROTOCOLS.HTTP) ||
+        trimmedUrl.startsWith(URL_PROTOCOLS.HTTPS)
+    ) {
         return trimmedUrl
     }
 
-    return `https://${trimmedUrl}`
+    return `${URL_PROTOCOLS.HTTPS}${trimmedUrl}`
 }

@@ -2,6 +2,15 @@ import React from 'react'
 import { useTheme } from '../hooks/useTheme'
 import './ThemeToggle.css'
 
+/**
+ * Theme Toggle Component
+ *
+ * Floating button that allows users to toggle between light and dark themes
+ * Displays sun icon in dark mode and moon icon in light mode
+ * Fixed position in top-right corner of the viewport
+ *
+ * @returns {React.ReactElement} The theme toggle button with dynamic icon
+ */
 function ThemeToggle(): React.ReactElement {
     const { theme, toggleTheme } = useTheme()
 
