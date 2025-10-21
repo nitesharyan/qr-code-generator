@@ -17,7 +17,17 @@ A modern, responsive QR Code Generator built with React, TypeScript, and Vite. G
 ## 📸 Screenshots
 
 <!-- Add screenshots here -->
-_Screenshots will be added soon_
+**Dark mode**
+<img width="1922" height="967" alt="image" src="https://github.com/user-attachments/assets/798ce614-beb4-4fd2-aebb-250f382da49d" />
+
+**Light mode**
+<img width="1917" height="959" alt="image" src="https://github.com/user-attachments/assets/59f2db30-c2fc-4dad-8e0b-52bb11e12d60" />
+
+**Once url is generated**
+<img width="1901" height="962" alt="image" src="https://github.com/user-attachments/assets/18f6a6c5-e73a-4a34-a09f-9bf98c245d7f" />
+
+**Scroll down to see download button**
+<img width="785" height="710" alt="image" src="https://github.com/user-attachments/assets/6f3203fc-1a69-4acd-bdfe-ca52e8db643a" />
 
 ---
 
